@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f1e7;
+  --foreground: #14140f;
+
+  /* Voetbalveld-geinspireerd paletje */
+  --color-pitch-950: #0b1410;
+  --color-pitch-900: #101d16;
+  --color-pitch-800: #172a1f;
+  --color-pitch-700: #203a2b;
+  --color-pitch-600: #2e4d39;
+  --color-pitch-400: #4d7259;
+
+  --color-chalk: #f5f1e7;
+  --color-chalk-200: #eae3d2;
+  --color-chalk-400: #d9cfb4;
+
+  --color-ink: #14140f;
+
+  --color-flare-400: #ff8563;
+  --color-flare-500: #ff5a36;
+  --color-flare-600: #e4471f;
+  --color-flare-700: #c23716;
+
+  --color-gold-400: #ffcf7a;
+  --color-gold-500: #ffb13d;
+  --color-gold-600: #e5921a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-pitch-950: var(--color-pitch-950);
+  --color-pitch-900: var(--color-pitch-900);
+  --color-pitch-800: var(--color-pitch-800);
+  --color-pitch-700: var(--color-pitch-700);
+  --color-pitch-600: var(--color-pitch-600);
+  --color-pitch-400: var(--color-pitch-400);
+
+  --color-chalk: var(--color-chalk);
+  --color-chalk-200: var(--color-chalk-200);
+  --color-chalk-400: var(--color-chalk-400);
+
+  --color-ink: var(--color-ink);
+
+  --color-flare-400: var(--color-flare-400);
+  --color-flare-500: var(--color-flare-500);
+  --color-flare-600: var(--color-flare-600);
+  --color-flare-700: var(--color-flare-700);
+
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+
+  --font-display: var(--font-anton);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Kopstuds-textuur: subtiele stippen als achtergrondpatroon voor donkere secties */
+.studs-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(245, 241, 231, 0.14) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+
+/* Kunstgras-streeplijnen voor lichte secties */
+.turf-stripes {
+  background-image: repeating-linear-gradient(
+    100deg,
+    rgba(11, 20, 16, 0.05) 0px,
+    rgba(11, 20, 16, 0.05) 2px,
+    transparent 2px,
+    transparent 68px
+  );
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--color-flare-500);
+}
+
+@keyframes speed-streak {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(160%);
+    opacity: 0;
+  }
+}
+
+.speed-streak {
+  animation: speed-streak 2.4s ease-in-out infinite;
+}
+
+@keyframes kick-motion {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+.kick-motion {
+  animation: kick-motion 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speed-streak,
+  .kick-motion {
+    animation: none;
+  }
+}
